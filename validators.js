@@ -5,7 +5,7 @@ const movieSchema = Joi.object({
   director: Joi.string().max(255).required(),
   year: Joi.string().max(255).required(),
   color: Joi.string().max(255).required(),
-  duration: Joi.string().max(255).required(),
+  duration: Joi.number().max(255).required(),
 });
 
 const validateMovie = (req, res, next) => {
