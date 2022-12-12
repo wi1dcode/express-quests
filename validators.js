@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require("joi")
 
 const movieSchema = Joi.object({
   title: Joi.string().max(255).required(),
@@ -6,22 +6,22 @@ const movieSchema = Joi.object({
   year: Joi.string().max(255).required(),
   color: Joi.string().max(255).required(),
   duration: Joi.number().max(255).required(),
-});
+})
 
 const validateMovie = (req, res, next) => {
-  const { title, director, year, color, duration } = req.body;
+  const { title, director, year, color, duration } = req.body
 
   const { error } = movieSchema.validate(
     { title, director, year, color, duration },
     { abortEarly: false }
-  );
+  )
 
   if (error) {
-    res.status(422).json({ validationErrors: error.details });
+    res.status(422).json({ validationErrors: error.details })
   } else {
-    next();
+    next()
   }
-};
+}
 
 const userSchema = Joi.object({
   firstname: Joi.string().max(255).required(),
@@ -29,24 +29,26 @@ const userSchema = Joi.object({
   email: Joi.string().email().max(255).required(),
   city: Joi.string().max(255).required(),
   language: Joi.string().max(255).required(),
-});
+  password: Joi.string().max(255).required(),
+})
 
 const validateUser = (req, res, next) => {
-  const { firstname, lastname, email, city, language } = req.body;
+  const { firstname, lastname, email, city, language, password } =
+    req.body
 
   const { error } = userSchema.validate(
-    { firstname, lastname, email, city, language },
+    { firstname, lastname, email, city, language, password },
     { abortEarly: false }
-  );
+  )
 
   if (error) {
-    res.status(422).json({ validationErrors: error.details });
+    res.status(422).json({ validationErrors: error.details })
   } else {
-    next();
+    next()
   }
-};
+}
 
 module.exports = {
   validateMovie,
   validateUser,
-};
+}
