@@ -33,8 +33,7 @@ const userSchema = Joi.object({
 })
 
 const validateUser = (req, res, next) => {
-  const { firstname, lastname, email, city, language, password } =
-    req.body
+  const { firstname, lastname, email, city, language, password } = req.body
 
   const { error } = userSchema.validate(
     { firstname, lastname, email, city, language, password },
@@ -47,6 +46,8 @@ const validateUser = (req, res, next) => {
     next()
   }
 }
+
+
 
 module.exports = {
   validateMovie,
