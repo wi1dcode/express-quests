@@ -1,4 +1,6 @@
 const database = require("./database")
+require("dotenv").config();
+
 
 const getUsers = (req, res) => {
   database
